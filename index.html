@@ -1,43 +1,734 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Astrological Houses</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Простой лендинг</title>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      
+    }
+
+
+    /* Шрифт */
+    @font-face {
+      font-family: 'MyFont';
+      src: url('bas.ttf');
+    }
+
+    /* Общие стили для заголовков */
+    .header, .pricing, .contact {
+      text-align: center;
+      padding: 50px 0;
+      color: white;
+    }
+
+    /* Форма контейнера */
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Стили для текста в форме */
+    .form-container label {
+      color: rgba(255, 255, 255, 1); /* Немного светлее */
+    }
+
+    .form-container input[type="text"], 
+    .form-container textarea {
+      width: 250px;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      background-color: transparent;
+      border: 1px solid white; /* Тоньше рамки */
+      font-family: 'MyFont'; /* Применяем шрифт MyFont */
+    }
+
+    .form-container input[type="submit"] {
+      background-color: transparent;
+      size: 20px;
+      border: 1px solid white; /* Тоньше рамки */
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 250px;
+      margin-top: 20px;
+      font-family: 'MyFont';
+    }
+
+    
+
+    /* Картинки первого слайда */
+    .img_one {
+      position: relative;
+      background-image: url("img_one.jpg");
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .img_one::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Затемнение */
+    }
+
+    .text-on-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgb(255, 255, 255);
+      text-shadow: 0.5px 0.5px 1px rgba(0,0,0,10);     
+      font-size: 15px;
+      width: 300px;
+      font-family: 'MyFont';
+      text-align: center;
+      z-index: 1;
+      padding: 50px;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+    }
+
+    .text-on-image-three {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgb(255, 255, 255);
+      text-shadow: 0.5px 0.5px 1px rgba(0,0,0,10);     
+      font-size: 15px;
+      width: 300px;
+      font-family: 'MyFont';
+      text-align: center;
+      z-index: 1;
+      padding: 50px;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+    }
+
+    /* Картинка 2 слайда */
+    .img_two {
+      position: relative;
+      background-image: url("img_two.PNG");
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+     .img_two::before { 
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Позволяет взаимодействовать с содержимым */
+      background-color: rgba(0, 0, 0, 0.5); /*Затемнение*/
+    } 
+
+    /* Картинка 3 слайда */
+    .img_three {
+      position: relative;
+      background-image: url("img_three.JPG");
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .img_three::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Затемнение */
+    }
+
+    /* Картинка 4 слайда */
+    .img_four {
+      position: relative;
+      background-image: url("img_four.JPG");
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-top: -1%;
+      font-family: 'MyFont';
+    }
+
+    .img_four::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Затемнение */
+    }
+/* картинка 5 слайда */
+
+    .img_five {
+        position: relative;
+        background-image: url("img_five.JPG");
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-top: -1%;
+        font-family: 'MyFont';
+        }
+
+        .img_five::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Затемнение */
+        }
+
+
+/*  */
+    /* Стили для раздела контактов */
+    .contact {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Стили для формы */
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    /* Кнопка "Обо мне" */
+    .hidden-text.centered {
+      display: block;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 10;
+      width: 250px;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      padding: 20px;
+      z-index: 999;
+    }
+
+    #toggle-button {
+      display: block;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 30vh;
+      z-index: 999;
+      font-family: 'MyFont';
+    }
+
+    /* Скрытый текст */
+    .hidden-text {
+      display: none;
+    }
+
+    /* Список выпадающий основной информации (+) */
+    .demo {
+      max-width: 1024px;
+      padding: 0 20px;
+      margin: 5% 10%;
+      margin-top: 50%;
+      height: 62.8vh;
+    }
+
+    /* Скрытие чекбоксов и блоков с содержанием */
+    .hide,
+    .hide + label ~ div {
+      display: none;
+    }
+
+    /* Вид текста label */
+    .hide + label {
+      margin: 0;
+      padding: 0;
+      color: white;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    /* Вид текста label при активном переключателе */
+    .hide:checked + label {
+      color: rgb(253, 253, 253);
+      border-bottom: 0;
+    }
+
+    /* Когда чекбокс активен, показываем блоки с содержанием */
+    .hide:checked + label + div {
+      display: block; 
+      background: transparent;
+      margin-left: 20px;
+      padding: 10px;
+    }
+
+    /* Анимация при появлении скрытых блоков */
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hide + label:before {
+      background-color: transparent;
+      color: white ;
+      /* content: "\002B"; */
+      display: block;
+      float: left;
+      font-size: 14px; 
+      font-weight: bold;
+      height: 16px;
+      line-height: 16px;
+      margin: 3px 5px;
+      text-align: center;
+      width: 16px;
+      border-radius: 50%;
+      
+    }
+/* 
+    .hide:checked + label:before {
+      content: "\2212";
+    } */
+
+    .plus_t {
+      font-family: 'MyFont';
+      height: 100vh;
+    }
+
+    /* loder */
+    .preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  /* фоновый цвет */
+  background: white;
+  z-index: 1001;
+}
+
+.preloader__image {
+
+  position: relative;
+  top: 40%;
+  left: 31%;
+  width: 200px;
+  height: 100px;
+  background-size: cover; /* добавлено */
+    background-position: center; /* добавлено */
+  margin-top: -35px;
+  margin-left: -35px;
+  text-align: center;
+  animation: preloader-shake 3s infinite linear;
+}
+
+@keyframes preloader-shake {
+  0% {
+    transform: translateX(-10px); /* начальное положение -10px по оси X */
+  }
+  50% {
+    transform: translateX(10px); /* положение через 50% времени +10px по оси X */
+  }
+  100% {
+    transform: translateX(-10px); /* возвращаемся в исходное положение через 100% времени */
+  }
+}
+
+.loaded_hiding .preloader {
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+
+.loaded .preloader {
+  display: none;
+}
+
+
+    /*  */
+
+/* слайдер коментариев */
+.swiper {
+        width: 200px;
+        height: 290px;
+      }
+
+      .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        font-size: 22px;
+        font-weight: bold;
+        /*команды выравнивают фото и заполняют контейнер ровно по центру*/
+        background-size: cover; /* добавлено */
+        background-position: center; /* добавлено */
+        /*  */
+        color: #fff;
+      }
+
+      .swiper-slide:nth-child(1n) {
+        background-image: url("com1.jpg");
+        
+      }
+
+      .swiper-slide:nth-child(2n) {
+        background-image: url("com2.jpg");      
+        }
+
+      .swiper-slide:nth-child(3n) {
+        background-image: url("com3.jpg");
+      }
+
+      .swiper-slide:nth-child(4n) {
+        background-image: url("com4.jpg");
+      }
+
+      .swiper-slide:nth-child(5n) {
+        background-image: url("com5.jpg");
+      }
+
+      .swiper-slide:nth-child(6n) {
+        background-image: url("com6.jpg");
+      }
+
+      .swiper-slide:nth-child(7n) {
+        background-image: url("com7.jpg");
+      }
+/* foter */
+.footer {
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative; /* изменено на относительное */
+      width: 100%;
+      
+    }
+    .icon-wrapper {
+      position: absolute; /* добавлено абсолютное позиционирование */
+      left: 50%; /* размещение по центру */
+      transform: translateX(-50%); /*центрирование относительно родительского контейнера*/
+      bottom: 0;
+      width: 100%;
+    }
+    .icon {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      margin: 0 10px;
+      left: 50%; /* размещение по центру */
+      transform: translateX(-50%); /*центрирование относительно родительского контейнера*/
+
+    }
+/*  */
+
+/* модальное окно  */
+/* Скрытие модального окна по умолчанию */
+.modal {
+  display: none; /* По умолчанию скрыто */
+  position: fixed; /* Фиксированное позиционирование */
+  z-index: 1; /* Выше всего остального контента */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  overflow: auto; /* Прокрутка, если содержимое больше окна */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Контейнер с содержимым модального окна */
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.8); /* Прозрачный белый цвет */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.message {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'MyFont';
+}
+
+/* Фиксированное положение элемента, отвечающего за закрытие модального окна */
+.close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+/*  */
+
+.sum_text{
+    text-align: left;
+}
+  </style>
 
 </head>
 <body>
-
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Тестирование темной и светлой темы</title>
-      <style>
-          /* Стили для темы светлая */
-          @media (prefers-color-scheme: light) {
-              body {
-                  background-color: black;
-                  color: white;
-              }
-          }
-          
-          /* Стили для темы темная */
-          @media (prefers-color-scheme: dark) {
-              body {
-                  background-color: black;
-                  color: white;
-              }
-          }
-      </style>
-  </head>
-  <body>
-      <h1>Тестирование темной и светлой темы</h1>
-      <p>Этот текст будет виден на странице.</p>
-  </body>
-  </html>
+<!-- лодер -->
+<div class="preloader">
+    <img class="preloader__image" src="heart.png" alt="Preloader Image">
+  </div>
   
+<!--  -->
+  <div class="img_one">
+    <div class="text-on-image">
+      <button id="toggle-button" class="toggle-button">Обо мне</button>
+      <p id="hidden-paragraph" class="hidden-text">
+        Здравствуй, дорогой🙌🏻<br>
+        Меня зовут Анна, я являюсь клиническим психологом. На своем опыте пережила глубокую депрессию, тревожность, панические атаки, пограничное расстройство личности, рпп, анорексию и булимию. 
+        В 2020 году я закончила Новосибирский Государственный Педагогический университет по направлению специально-дефектологическое образование, специальная психология.
+        Еще до окончания университета, я начала свою практику. Прошла множество психологических  тренингов и духовных практик в Новосибирске, Москве, Петербурге, Бали, Индии. Сама на постоянной основе нахожусь на терапии с супервизором и повышаю свою квалификацию. 
+      </p>   
+    </div>
+  </div>
+  
+
+  <div class="img_two">
+    <div class="plus_t contact" >
+      <div class="pricing contact" id="pricing">
+        <div class="pricing-plans contact">
+          <div class="plan contact">
+            <div class="demo sum_text">
+              <input class="hide contact" id="hd-1" type="checkbox">
+              <label for="hd-1">- с какими запросами я работаю ?</label>
+              <div class="sum_text">пограничное расстройство личности<br>
+                депрессия<br>
+                биполярное расстройство личности<br>
+                тревожное расстройство личности<br>
+                панические атаки<br>
+                посттравматическое стрессовое
+                расстройство<br>
+                любовные и эмоциональные
+                зависимости<br>
+                проблемы в коммуникациях<br>
+                вопросы самореализации<br>
+                проживание горя</div>
+              <br/>
+              <br/>
+              <input class="hide" id="hd-2" type="checkbox">
+              <label for="hd-2">- как проходят консультации ?</label>
+              <div class="sum_text">консультации проходят в онлайн формате
+                в любом удобном для вас мессенджере (
+                WhatsApp, Skype, Telegram ,zoom)
+                через аудио/видео связь/переписка  .</div>
+              <br/>
+              <br/>
+              <input class="hide" id="hd-3" type="checkbox">
+              <label for="hd-3">- как часто нужно ходить на консультации ?</label>
+              <div class="sum_text">все зависит от вашего запроса, обычно
+                терапия длится 1 раз в неделю 60 минут.</div>
+              <br/>
+              <br/>
+              <input class="hide" id="hd-4" type="checkbox">
+              <label for="hd-4">- тарифы</label>
+              <div class="sum_text">
+                -стоимость одного часа - 15.000 тнг. <br>аудио/видео созвон<br>
+                -стоимость общения в переписке 1.5 часа - 15.000 тнг.<br>
+                -пакет из 5 часовых созвонов (переписка - 1.5 часа) - 70.000 тнг.<br>
+                -пакет из 10 часовых созвонов (переписка - 1.5 часа) - 140.000 тнг.<br>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img_three">
+    <p class="text-on-image-three">
+      Самой главной задачей перед собой ставлю улучшить состояние каждого человека, кто обращается ко мне, помочь с принятием себя. На каждой консультации создаётся безопасное, безоценочное, тёплое пространство, где вашей душе будет приятно и легко раскрываться и излечиваться❤️‍🩹
+    </p>
+  </div>
+
+<div class="img_four">
+    <!-- Swiper -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+
+</div>
+
+  <div class="img_five">
+    <div class="contact" id="contact">
+      <h2>Запись на сеанс</h2>
+      <div class="form-container">
+        <!-- <form action="#" method="post">
+          <input type="text" name="name" placeholder="Имя" required>
+          <input type="text" name="phone" placeholder="Телефон" required>
+          <textarea name="message" placeholder="Ваше послание" rows="4" required></textarea>
+          <input type="submit" value="Отправить">
+        </form> -->
+        <form id="myForm" action="#" method="post">
+            <input id="name" type="text" name="name" placeholder="Имя" required>
+            <input id="number" type="text" name="phone" placeholder="Телефон" required>
+            <textarea id="message" name="message" placeholder="Ваше послание" rows="4" required></textarea>
+            <input type="submit" value="Отправить" onclick="submitForm(); return false;">
+          </form>
+        
+          <div id="modal" class="modal" onclick="closeModal()">
+            <div class="modal-content">
+              <p class="message">Спасибо за ваш запрос!</p>
+            </div>
+          </div>
+        
+      </div>
+      <footer class="footer">
+        <a href="https://www.instagram.com/blacklovetattoo_?igsh=ejlnNWRhZm5rM2s2" target="_blank"><img class="icon" src="inst.png" alt="Icon 1"></a>
+        <a href="https://wa.me/+77778684841" target="_blank"><img class="icon" src="what's.png" alt="Icon 2"></a>
+        <a href="https://t.me/umkasas" target="_blank"><img class="icon" src="telegram.png" alt="Icon 3"></a>
+      </footer>
+    </div>
+  </div>
+ 
+ 
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+
+   // Запуск функции после задержки в 4 секунды
+// Скрываем прелоадер через 3 секунды
+setTimeout(function() {
+  document.querySelector('.preloader').style.display = 'none';
+}, 2000); // 3000 миллисекунд = 3 секунды
+
+    // swiper\
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        effect: "cards",
+        grabCursor: true
+      });
+    // 
+    document.addEventListener('DOMContentLoaded', function () {
+      var toggleButton = document.getElementById('toggle-button');
+      var hiddenParagraph = document.getElementById('hidden-paragraph');
+      var isTextVisible = false; // Флаг видимости текста
+
+      toggleButton.addEventListener('click', function () {
+        if (!isTextVisible) {
+          hiddenParagraph.classList.add('centered');
+          hiddenParagraph.style.display = 'block';
+          toggleButton.style.display = 'none';
+          isTextVisible = true; // Устанавливаем флаг в true
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        if (isTextVisible && !hiddenParagraph.contains(event.target) && event.target !== toggleButton) {
+          hiddenParagraph.style.display = 'none';
+          toggleButton.style.display = 'block';
+          isTextVisible = false; // Устанавливаем флаг в false
+        }
+      });
+    });
+
+
+    // tg
+
+    function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+function showModal() {
+  document.getElementById('modal').style.display = 'flex';
+}
+
+window.addEventListener('load', function() {
+  closeModal(); // Скрываем модальное окно при загрузке страницы
+});
+
+function submitForm() {
+  const name = document.getElementById('name').value;
+  const number = document.getElementById('number').value;
+  const messageText = document.getElementById('message').value;
+
+  const message = `Новая заявка:\nИмя: ${name}\nНомер: ${number}\nСообщение: ${messageText}`;
+
+  const telegramBotToken = '6369786910:AAH-xOkTliCmucIvSFor68V4NgKmmpf47yE';
+  const chatId = '-4111738113';
+
+  const apiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+  fetch(apiUrl, { method: 'POST' })
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        showModal(); // Показываем модальное окно
+      } else {
+        alert('Произошла ошибка при отправке заявки');
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка при отправке заявки:', error);
+      alert('Произошла ошибка при отправке заявки');
+    });
+}
+
+
+  </script>
 </body>
 </html>
-
-
